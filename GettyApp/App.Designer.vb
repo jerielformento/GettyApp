@@ -78,6 +78,9 @@ Partial Class AppForm
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.pb_min = New System.Windows.Forms.PictureBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TrayIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb_logout, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,6 +96,7 @@ Partial Class AppForm
         Me.GroupBox4.SuspendLayout()
         Me.pnl_msg_container.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        CType(Me.pb_min, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnpause
@@ -292,6 +296,7 @@ Partial Class AppForm
         Me.pb_logout.BackColor = System.Drawing.Color.Transparent
         Me.pb_logout.BackgroundImage = CType(resources.GetObject("pb_logout.BackgroundImage"), System.Drawing.Image)
         Me.pb_logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pb_logout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pb_logout.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pb_logout.Location = New System.Drawing.Point(622, 6)
         Me.pb_logout.Name = "pb_logout"
@@ -710,6 +715,34 @@ Partial Class AppForm
         Me.Panel2.Size = New System.Drawing.Size(1, 39)
         Me.Panel2.TabIndex = 53
         '
+        'pb_min
+        '
+        Me.pb_min.BackColor = System.Drawing.Color.Transparent
+        Me.pb_min.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pb_min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pb_min.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pb_min.Location = New System.Drawing.Point(590, 6)
+        Me.pb_min.Name = "pb_min"
+        Me.pb_min.Size = New System.Drawing.Size(26, 26)
+        Me.pb_min.TabIndex = 55
+        Me.pb_min.TabStop = False
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.LightGray
+        Me.Panel3.ForeColor = System.Drawing.Color.LightGray
+        Me.Panel3.Location = New System.Drawing.Point(596, 24)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(14, 2)
+        Me.Panel3.TabIndex = 56
+        '
+        'TrayIcon
+        '
+        Me.TrayIcon.BalloonTipText = "Click here to maximize the application."
+        Me.TrayIcon.Icon = CType(resources.GetObject("TrayIcon.Icon"), System.Drawing.Icon)
+        Me.TrayIcon.Text = "Getty"
+        Me.TrayIcon.Visible = True
+        '
         'AppForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -720,6 +753,8 @@ Partial Class AppForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(654, 433)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.pb_min)
         Me.Controls.Add(Me.blk_pnl)
         Me.Controls.Add(Me.pnl_msg)
         Me.Controls.Add(Me.Label10)
@@ -738,7 +773,7 @@ Partial Class AppForm
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AppForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = " "
+        Me.Text = " Getty"
         Me.Panel1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb_logout, System.ComponentModel.ISupportInitialize).EndInit()
@@ -760,6 +795,7 @@ Partial Class AppForm
         Me.pnl_msg_container.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
+        CType(Me.pb_min, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -818,5 +854,8 @@ Partial Class AppForm
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents pnl_msg_container As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents pb_min As System.Windows.Forms.PictureBox
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents TrayIcon As System.Windows.Forms.NotifyIcon
 
 End Class

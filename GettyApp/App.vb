@@ -198,4 +198,13 @@ Public Class AppForm
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
         MsgBox("Coming soon ..", vbInformation, "System Message")
     End Sub
+
+    Private Sub pb_min_Click(sender As System.Object, e As System.EventArgs) Handles pb_min.Click
+        TrayIcon.ShowBalloonTip(1)
+        Me.Hide()
+    End Sub
+
+    Private Sub TrayIcon_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles TrayIcon.Click
+        Me.Show()
+    End Sub
 End Class

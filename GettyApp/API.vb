@@ -45,6 +45,8 @@ Module API
             ByVal alert As Integer
         )
 
+        writeHistoryLogs(user, station, ipaddress, LOGIN, 0, LOGIN)
+
         Dim request As WebRequest = WebRequest.Create(url)
         request.Method = "POST"
         Dim postData As String
@@ -164,6 +166,8 @@ Module API
             ByVal alert As Integer
         )
 
+        writeHistoryLogs(user, station, ipaddress, LOGOUT, 1, LOGOUT)
+
         Dim request As WebRequest = WebRequest.Create(url)
         request.Method = "POST"
         Dim postData As String
@@ -227,6 +231,8 @@ Module API
             bstatus = breakStatus
         End If
 
+        writeHistoryLogs(user, station, ipaddress, reason, bstatus, PAUSE)
+
         Dim request As WebRequest = WebRequest.Create(url)
         request.Method = "POST"
         Dim postData As String
@@ -256,6 +262,11 @@ Module API
                         AppForm.btnpause.Text = "    Resume"
                         AppForm.blk_pnl.Visible = True
                         AppForm.pb_logout.Enabled = False
+                        AppForm.pb_min.Enabled = False
+                        AppForm.LogsChecker.Stop()
+                        AppForm.InboxChecker.Stop()
+                        AppForm.SchedChecker.Stop()
+                        AppForm.TimeManager.Stop()
                     Else
                         breakReason = ""
                         breakStatus = 0
@@ -263,6 +274,12 @@ Module API
                         AppForm.btnpause.Text = "    Break"
                         AppForm.blk_pnl.Visible = False
                         AppForm.pb_logout.Enabled = True
+                        AppForm.pb_min.Enabled = True
+                        AppForm.displayMessages()
+                        AppForm.LogsChecker.Start()
+                        AppForm.InboxChecker.Start()
+                        AppForm.SchedChecker.Start()
+                        AppForm.TimeManager.Start()
                     End If
 
                     MsgBox(json.SelectToken("message"), vbInformation, "System Message")

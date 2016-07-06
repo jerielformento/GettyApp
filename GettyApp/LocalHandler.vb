@@ -4,6 +4,7 @@ Module LocalHandler
 
     Private LOCAL_LOGS_PATH As String = "C:\CollectiveSolution\Getty\logs.txt"
     Private VERSION_LOG As String = "C:\CollectiveSolution\Getty\vupdate.txt"
+    Private HISTORY_LOGS As String = "C:\CollectiveSolution\Getty\history.txt"
 
     Public Function versionChecker() As String
         Dim vRead As String
@@ -28,6 +29,25 @@ Module LocalHandler
         )
 
         Dim file As String = LOCAL_LOGS_PATH
+        Dim Writer As New System.IO.StreamWriter(file, True)
+        Writer.WriteLine(user & "," & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "," & Environment.MachineName & "," & reason & "," & bstatus & "," & type & "," & ipaddress)
+        Writer.Close()
+    End Sub
+
+    Public Sub writeHistoryLogs(
+            ByVal user As String,
+            ByVal station As String,
+            ByVal ipaddress As String,
+            ByVal reason As String,
+            ByVal bstatus As String,
+            ByVal type As String
+        )
+
+        Dim file As String = HISTORY_LOGS
+        If System.IO.File.Exists(file) = False Then
+            System.IO.File.Create(file).Dispose()
+        End If
+
         Dim Writer As New System.IO.StreamWriter(file, True)
         Writer.WriteLine(user & "," & DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & "," & Environment.MachineName & "," & reason & "," & bstatus & "," & type & "," & ipaddress)
         Writer.Close()

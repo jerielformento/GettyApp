@@ -52,7 +52,7 @@ Public Class LoginApp
     Private Sub LoginApp_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         cmd_close = True
         hasLogs(LOCAL_LOG_PATH)
-        userDirectLogin()
+        'userDirectLogin()
         txt_station.Text = Environment.MachineName
         lbl_version.TextAlign = ContentAlignment.MiddleLeft
         lbl_version.Text = versionChecker()
